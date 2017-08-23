@@ -14,18 +14,13 @@ Create a blank table which has First Name, Last Name, Email and Contact Number a
 
 
       $('form').submit(function() {
-        console.log($(this).serializeArray());
-        alert('you submitted me!');
-        var fields = $(":input").serializeArray();
-        jQuery.each(fields, function(i, field) {
-          $("#myTable").append(field.value + " ");
-        });
-
+        var firstname = $('#firstname').val();
+        var lastname = $('#lastname').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+        alert(firstname, lastname, email, phone);
         return false;
       });
-
-
-
 
 
     });
@@ -60,11 +55,11 @@ Create a blank table which has First Name, Last Name, Email and Contact Number a
   <hr>
   <form>
     First name:<br>
-    <input type="text" name="firstname">
+    <input id="firstname" type="text" name="firstname" placeholder="first name">
     <br> Last name:<br>
-    <input type="text" name="lastname"> <br>Email Address:<br>
-    <input type="email" name="email"> <br>Phone #: <br>
-    <input type="text" name="phone"><br>
+    <input id="lastname" type="text" name="lastname" placeholder="last name"> <br>Email Address:<br>
+    <input id="email" type="email" name="email" placeholder="email@domain.com"> <br>Phone #: <br>
+    <input id="phone" type="text" name="phone" placeholder="123 345 5778"><br>
     <button id="submit">Submit</button>
   </form>
 
