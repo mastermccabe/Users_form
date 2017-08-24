@@ -10,59 +10,121 @@ Create a blank table which has First Name, Last Name, Email and Contact Number a
   <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
 
   <script type="text/javascript">
+
     $(document).ready(function() {
 
+      $('#user_form').submit(function(event){
 
-      $('form').submit(function() {
-        var firstname = $('#firstname').val();
-        var lastname = $('#lastname').val();
-        var email = $('#email').val();
-        var phone = $('#phone').val();
-        alert(firstname, lastname, email, phone);
-        return false;
+        // Reference to the form
+        // var form = $(this);
+
+        // console.log(form.serializeArray()); // Don't really need .serializeArray()
+
+        // Below creates and html element
+        var html = '<tr>';
+        html += '<td>' + $('#user_firstname').val() + '</td>';
+        html += '<td>' + $('#user_lastname').val() + '</td>';
+        html += '<td>' + $('#user_email').val() + '</td>';
+        html += '<td>' + $('#user_phone').val() + '</td>';
+        html += '</tr>';
+
+        // Below appends the html element to <tbody class="users-body">
+        $('.users-body').append(html);
+
+        // Below clears the form
+        form[0].reset();
+
+        // Below prevents the default submission of the form
+        event.preventDefault()
+
       });
 
-
     });
+
   </script>
+
+  <style>
+  label {
+    display: block;
+  }
+  .form-group {
+    margin-bottom: 7px;
+  }
+  .form-group:last-child {
+    margin-bottom: 0;
+  }
+  </style>
 
 
 
 </head>
 
 <body>
+
   <table id="myTable" class="tablesorter">
+
     <thead>
       <tr>
-        <th id="firstname">First Name</th>
+        <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
         <th>Phone</th>
       </tr>
     </thead>
 
-    <tbody>
+    <tbody class="users-body">
+
       <tr>
         <td>Smith</td>
         <td>John</td>
         <td>jsmith@gmail.com</td>
         <td>12345678</td>
       </tr>
+
+    </tbody> <!-- This was missing!!!! -->
+
   </table>
 
-  <br><br>
   <h1> Add Users </h1>
   <hr>
-  <form>
-    First name:<br>
-    <input id="firstname" type="text" name="firstname" placeholder="first name">
-    <br> Last name:<br>
-    <input id="lastname" type="text" name="lastname" placeholder="last name"> <br>Email Address:<br>
-    <input id="email" type="email" name="email" placeholder="email@domain.com"> <br>Phone #: <br>
-    <input id="phone" type="text" name="phone" placeholder="123 345 5778"><br>
-    <button id="submit">Submit</button>
-  </form>
 
+  <form id="user_form">
+
+    <div class="form-group">
+
+      <label>First Name:</label>
+      <input type="text" id="user_firstname" name="user[firstname]" placeholder="First Name">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Last Name:</label>
+      <input type="text" id="user_lastname" name="user[lastname]" placeholder="Last Name">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Email:</label>
+      <input type="email" id="user_email" name="user[email]" placeholder="Email">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Phone #:</label>
+      <input type="text" id="user_phone" name="user[phone]" placeholder="Phone #">
+
+    </div>
+
+    <div class="form-group">
+
+      <button id="submit">Submit</button>
+
+    </div>
+
+  </form>
 
 </body>
 
