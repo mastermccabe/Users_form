@@ -34,6 +34,8 @@ Create a blank table which has First Name, Last Name, Email and Contact Number a
         // Below clears the form
         form[0].reset();
 
+        $('#user_firstname').focus();
+
         // Below prevents the default submission of the form
         event.preventDefault()
 
@@ -117,7 +119,7 @@ Create a blank table which has First Name, Last Name, Email and Contact Number a
 
     <div class="form-group">
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" name="" class="btn btn-primary">Submit</button>
 
     </div>
 
